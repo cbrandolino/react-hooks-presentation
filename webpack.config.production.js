@@ -49,6 +49,12 @@ module.exports = {
         ]
       },
       {
+        test: /\.example$/,
+        use: [{
+          loader: 'raw-loader'
+        }],
+      },
+      {
         test: /\.css$/,
         use: [
           {
