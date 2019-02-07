@@ -1,10 +1,18 @@
 // Import React
 import React from 'react';
 
+import useStateApiExample from './useStateApi.example';
+import separateLogicExample from './separateLogic.example';
+import handleChangeExample from './handleChange.example';
+import testExample from './test.example';
+
 // Import Spectacle Core tags
 import {
+  Appear,
   BlockQuote,
   Cite,
+  Code,
+  CodePane,
   Deck,
   Heading,
   Image,
@@ -19,13 +27,9 @@ import {
 // Import theme
 import createTheme from 'spectacle/lib/themes/default';
 
-const images = {
-  formidagon: require('../assets/formidable-logo.svg'),
-  goodWork: require('../assets/good-work.gif')
-};
-
 // Require CSS
 require('normalize.css');
+require('./code.css');
 
 const theme = createTheme(
   {
@@ -44,64 +48,93 @@ export default class Presentation extends React.Component {
   render() {
     return (
       <Deck
-        transition={['slide']}
+        transition={['fade']}
         transitionDuration={500}
         theme={theme}
       >
-        <Slide transition={['slide']} bgColor="primary">
-          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            Spectacle Boilerplate
+        <Slide bgColor="primary">
+          <Heading size={1} fit caps lineHeight={1} textColor="tertiary">
+            React Hooks
           </Heading>
-          <Text margin="10px 0 0" textColor="tertiary" fit bold>
-            open the presentation/index.js file to get started
-          </Text>
+          <Heading size={3} lineHeight={1} textColor="secondary">
+            new in React 16.8
+          </Heading>
         </Slide>
         <Slide bgColor="secondary">
-          <Image src={images.formidagon} width={800} />
-        </Slide>
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
-            Typography
+          <Heading size={6} textColor="tertiary" caps>
+            Why hooks?
           </Heading>
-          <Heading size={1} textColor="secondary">
-            Heading 1
-          </Heading>
-          <Heading size={2} textColor="secondary">
-            Heading 2
-          </Heading>
-          <Heading size={3} textColor="secondary">
-            Heading 3
-          </Heading>
-          <Heading size={4} textColor="secondary">
-            Heading 4
-          </Heading>
-          <Heading size={5} textColor="secondary">
-            Heading 5
-          </Heading>
-          <Text size={6} textColor="secondary">
-            Standard text
-          </Text>
-        </Slide>
-        <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Standard List
-          </Heading>
-          <List>
-            <ListItem>Item 1</ListItem>
-            <ListItem>Item 2</ListItem>
-            <ListItem>Item 3</ListItem>
-            <ListItem>Item 4</ListItem>
+          <List textColor="primary">
+            <Appear>
+              <ListItem lineHeight={3} padding={10}>
+                Fewer classes
+                <List padding={10}>
+                  <Appear>
+                    <ListItem padding={5}>better hot loading</ListItem>
+                  </Appear>
+                  <Appear>
+                    <ListItem padding={5}>more potential for precompilation</ListItem>
+                  </Appear>
+                </List>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem padding={10}>Sharing stateful logic among different components</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem padding={10}>Code that belongs together is kept together</ListItem>
+            </Appear>
           </List>
         </Slide>
-        <Slide transition={['fade']} bgColor="secondary" textColor="primary">
-          <BlockQuote>
-            <Quote>Example Quote</Quote>
-            <Cite margin="10px 0 0 30px">Author</Cite>
-          </BlockQuote>
+        <Slide bgColor="primary">
+
+          <Heading size={1} caps lineHeight={1} textColor="tertiary">
+            Case study
+          </Heading>
+          <Heading size={2} lineHeight={1} textColor="secondary">
+            useCase()
+          </Heading>
+        </Slide>
+        <Slide bgColor="primary">
+          <Heading size={6} textColor="tertiary" lineHeight={2} >
+            useState: basic example
+          </Heading>
+          <CodePane lang="javascript" source={useStateApiExample} />
+        </Slide>
+        <Slide bgColor="primary">
+          <Heading size={6} textColor="tertiary" lineHeight={2} >
+            useState: separate / reuse logic
+          </Heading>
+          <CodePane lang="javascript" source={separateLogicExample} />
+        </Slide>
+        <Slide bgColor="primary">
+          <Heading size={6} textColor="tertiary" lineHeight={2} >
+            useState: handleChange / input field
+          </Heading>
+          <CodePane lang="javascript" source={handleChangeExample} />
+        </Slide>
+        <Slide bgColor="secondary">
+          <Heading size={1} fit caps lineHeight={1} textColor="primary">
+            What about testing?
+          </Heading>
+          <Appear>
+            <Heading size={2} fit lineHeight={1} textColor="tertiary">
+              react-testing-library to the rescue
+            </Heading>
+          </Appear>
         </Slide>
         <Slide>
-          <Image src={images.goodWork} width={500} />
-          <Notes>gifs work too</Notes>
+          <Slide bgColor="primary">
+            <Heading size={6} textColor="tertiary" lineHeight={2} >
+              useState: testing
+            </Heading>
+            <CodePane lang="javascript" source={testExample} />
+          </Slide>
+        </Slide>
+        <Slide bgColor="secondary">
+          <Heading size={1}  caps lineHeight={1} textColor="tertiary">
+            Thanks
+          </Heading>
         </Slide>
       </Deck>
     );

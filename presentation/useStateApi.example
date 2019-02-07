@@ -1,0 +1,18 @@
+import React, { useState, Fragment } from 'react';
+
+const Counter = () => {
+  // useState returns an array of [ getter, setter ]
+  const [ count, setCount ] = useState();
+
+  // We can use the setter to update the value
+  const increment = () => setCount(count + 1);
+
+  return (
+    <Fragment>
+      <p>You clicked {count} times</p>
+      <button onClick={increment}>
+        Click me
+      </button>
+    </Fragment>
+  );
+};

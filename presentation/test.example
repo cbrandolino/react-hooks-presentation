@@ -1,0 +1,25 @@
+import { testHook, act, cleanup } from 'react-testing-library'
+import useCounter from './useCounter';
+
+describe('useCounter', () => {
+  afterEach(cleanup);
+
+  it('accepts default initial values', () => {
+    let count;
+    testHook(() => ({ count } = useCounter());
+
+    expect(count).tobe(0);
+  });
+
+  it('provides an increment function', () => {
+    let count, increment;
+    testHook(() => ({ count, increment } = useCounter()));
+
+    expect(count).toBe(0);
+    
+    act(() => increment());
+
+    expect(count).toBe(2);
+  });
+});
+

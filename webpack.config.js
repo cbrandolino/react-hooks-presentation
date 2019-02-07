@@ -49,6 +49,12 @@ module.exports = {
       }],
       include: __dirname
     }, {
+      test: /\.example$/,
+      use: [{
+        loader: 'raw-loader'
+      }],
+      include: __dirname
+    }, {
       test: /\.svg$/,
       use: [{
         loader: 'url-loader',

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import Redbox from 'redbox-react';
 import { AppContainer } from 'react-hot-loader';
 
 import Presentation from './presentation';
+
+console.log(useState);
 
 const CustomErrorReporter = ({ error }) => <Redbox error={error} />;
 
